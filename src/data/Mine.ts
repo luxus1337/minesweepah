@@ -1,6 +1,9 @@
-import {Point} from 'pixi.js';
 
-export interface Mine {
-    isFired: boolean;
-    isDefused: boolean;
+export default class  Mine {
+    public isFired: boolean = false;
+    public position: PIXI.Point;
+
+    constructor(position:PIXI.Point) {
+        this.position = position;
+    }
 }

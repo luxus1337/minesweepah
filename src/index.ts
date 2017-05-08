@@ -1,6 +1,4 @@
 import GameState from './states/Game';
 
-document.onload = () => {
-    new GameState();
-}
-
+//for now this is the only state...
+new GameState();

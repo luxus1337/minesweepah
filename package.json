@@ -3,12 +3,30 @@
   "version": "1.0.0",
   "description": "A minesweeper game using Pixi",
   "main": "src/index.ts",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "dev": "npm run clean && npm-run-all --parallel gulp:watch",
+    "prod": "npm run clean && npm-run-all --parallel gulp:prod",
+    "gulp:watch": "gulp watch",
+    "gulp:prod": "gulp prod"
+  },
   "author": "Luigi van der Pal",
   "license": "MIT",
   "dependencies": {
     "@types/node": "^7.0.16",
     "@types/pixi.js": "^4.4.4",
+    "browserify": "13.1.1",
+    "gulp": "3.9.1",
+    "gulp-less": "3.3.0",
+    "gulp-minify-css": "1.2.4",
+    "gulp-open": "2.0.0",
+    "gulp-twig": "0.7.0",
+    "gulp-uglifyjs": "0.6.2",
+    "npm-run-all": "3.1.2",
     "pixi": "^0.3.1",
-    "typescript": "^2.3.2"
+    "tsify": "3.0.0",
+    "typescript": "2.1.4",
+    "vinyl-buffer": "1.0.0",
+    "vinyl-source-stream": "1.1.0"
   }
 }
