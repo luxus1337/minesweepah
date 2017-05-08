@@ -2,31 +2,21 @@
 A Minesweeper example build using Pixi.js
 
 ### Installing dependencies
+If you prefer npm over yarn, please replace any yarn command by npm
 ```
 $ yarn install
-```
-Or if you prefer npm
-```
-$ npm install
 ```
 
 
 ### Compiling the game
-#### Development
+> Development
 ```
 $ yarn run dev
 ```
-Or if you prefer npm
-```
-$ npm run dev
-```
-#### Production
+
+> Production
 ```
 $ yarn run prod
-```
-Or if you prefer npm
-```
-$ npm run prod
 ```
 
 After this your compiled game will be in the "dist"-folder
