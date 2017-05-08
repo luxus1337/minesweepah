@@ -112,12 +112,16 @@ export default class GridVisuals {
 
             //let the tile fire and event if he is clicked
             tileSprite.interactive = true;
-
+            let isFlagging: boolean = false;
             tileSprite.on('rightdown', () => {
+                isFlagging = true;
                 GridContainer.flagPosition(tile.position);
             });
-
+            
             const handlePointer = () => {
+                if(isFlagging) {
+                    return;
+                }
                 if(tile.mine !== null) {
                     if(GridContainer.flagMode) {
                         EventManager.gridClick.fire({
@@ -135,8 +139,17 @@ export default class GridVisuals {
                 }
             }
 
-            tileSprite.on('mousedown', handlePointer);
-            tileSprite.on('touchdown', handlePointer);
+
+            if(GridVisuals.isMobile()) {
+                tileSprite.on('pointerdown', handlePointer);
+            } else {
+
+                tileSprite.on('rightup', () => {
+                    isFlagging = false;
+                })
+
+                tileSprite.on('mousedown', handlePointer);
+            }
 
 
             //tile animation for hover
@@ -147,6 +160,22 @@ export default class GridVisuals {
                 tileSprite.texture = GridVisuals.tileFrame;
             });
         });
+    }
+
+    static isMobile(): boolean {
+        if( navigator.userAgent.match(/Android/i)
+        || navigator.userAgent.match(/webOS/i)
+        || navigator.userAgent.match(/iPhone/i)
+        || navigator.userAgent.match(/iPad/i)
+        || navigator.userAgent.match(/iPod/i)
+        || navigator.userAgent.match(/BlackBerry/i)
+        || navigator.userAgent.match(/Windows Phone/i)
+        ){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     static addFlagModeButton(): void {
