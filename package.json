@@ -1,0 +1,14 @@
+{
+  "name": "minesweepah",
+  "version": "1.0.0",
+  "description": "A minesweeper game using Pixi",
+  "main": "src/index.ts",
+  "author": "Luigi van der Pal",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^7.0.16",
+    "@types/pixi.js": "^4.4.4",
+    "pixi": "^0.3.1",
+    "typescript": "^2.3.2"
+  }
+}
