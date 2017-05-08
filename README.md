@@ -3,7 +3,7 @@ A Minesweeper example build using Pixi.js. You can play a prebuild version of th
 
 
 ### Installing dependencies
-If you prefer npm over yarn, please replace any yarn command by npm
+If you prefer npm over yarn, please replace any yarn commands by npm
 ```
 $ yarn install
 ```
