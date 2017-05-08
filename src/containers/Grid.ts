@@ -1,6 +1,7 @@
 
 import Tile from '../data/Tile';
 import Mine from '../data/Mine';
+import GridVisualsContainer from '../containers/GridVisuals'
 
 export default class Grid {
     static flagMode: boolean = false;
@@ -93,14 +94,10 @@ export default class Grid {
     }
 
     static revealTileAtPosition(position: PIXI.Point): void {
-        let tile = Grid.getTileAtPosition(position);
         if(Grid.flagMode) {
-            if(!tile.isRevealed && !tile.isFlagged) {
-                tile.isFlagged = true;
-            } else if(!tile.isRevealed && tile.isFlagged) {
-                tile.isFlagged = false;
-            }
+            Grid.flagPosition(position);
         } else {
+            let tile = Grid.getTileAtPosition(position);
             if(tile !== null && !tile.isRevealed && !tile.isFlagged) {
                 tile.isRevealed = true;
                 if(tile.getMineNeighbourCount() === 0 && tile.mine === null) {
@@ -112,6 +109,17 @@ export default class Grid {
                 }
             }
         }
+    }
+
+    static flagPosition(position: PIXI.Point): void {
+        let tile = Grid.getTileAtPosition(position);
+        if(!tile.isRevealed && !tile.isFlagged) {
+            tile.isFlagged = true;
+        } else if(!tile.isRevealed && tile.isFlagged) {
+            tile.isFlagged = false;
+        }
+
+        GridVisualsContainer.updateVisuals();
     }
 
     static createGrid(): void {

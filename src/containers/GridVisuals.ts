@@ -112,7 +112,12 @@ export default class GridVisuals {
 
             //let the tile fire and event if he is clicked
             tileSprite.interactive = true;
-            tileSprite.on('pointerdown', () => {
+
+            tileSprite.on('rightdown', () => {
+                GridContainer.flagPosition(tile.position);
+            });
+
+            const handlePointer = () => {
                 if(tile.mine !== null) {
                     if(GridContainer.flagMode) {
                         EventManager.gridClick.fire({
@@ -128,7 +133,11 @@ export default class GridVisuals {
                         position: tile.position
                     });
                 }
-            });
+            }
+
+            tileSprite.on('mousedown', handlePointer);
+            tileSprite.on('touchdown', handlePointer);
+
 
             //tile animation for hover
             tileSprite.on('mouseover', () => {
